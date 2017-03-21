@@ -1,0 +1,27 @@
+{% extends "Cbrowser/base.html" %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row" >
+            <div class="col-sm-6 col-lg-4 col-sm-offset-3 col-lg-offset-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading" align="center">
+                        <h3>Teacher Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" >
+                        <tbody align="center">
+                            {% for pr in prf %}
+                                <tr><td><img src="{{pr.p_pic}}" style="width: 240px"></td></tr>
+                                <tr><td><h4>Name : {{pr.name}}</h4></td></tr>
+                                <tr><td><h4>Course Taken : <a href="/Cbrowser/{{pr.dept.d_id}}/{{pr.c_taken.c_id}}/"> {{pr.c_taken}}</a></td></tr>
+                                <tr><td><h4>Department : <a href="{%url 'Cbrowser:detail' pr.dept.d_id %}">{{pr.dept}}</a></h4></td></tr>
+                                <tr><td><h4>Professor ID : {{pr.p_id}}</h4></td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </dib>
+        </div>
+    </div>
+</div>
+{% endblock  %}

@@ -1,0 +1,58 @@
+{% extends "Cbrowser/base.html" %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="{% url 'Cbrowser:detail' dpt.0.2%}">
+                            <img src="{{dpt.0.3}}" class="img-responsive">
+                            <h4>Department : {{dpt.0.1}}</h4>
+                            <h4>Department id : {{dpt.0.2}}</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-md-9">
+                <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                    <li role="presentation" class="active"><a href="{% url 'Cbrowser:index'%}">View All Departments</a></li>
+                </ul>
+
+                <div class="panel panel-primary" >
+                    <div class="panel-heading" >
+                        <h3>All offered cources for this Department</h3>
+                    </div>
+                    <div class="panel-body" >
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th><h4>Name</h4></th>
+                                    <th><h4>ID</h4></th>
+                                    <th><h4>Semester</h4></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for c in cor %}
+                                    <tr >
+                                        <a href="/Cbrowser/{{dpt.0.2}}/{{c.1}}/">
+                                        <td><h4><a href="/Cbrowser/{{dpt.0.2}}/{{c.1}}/"><img src="{{c.4}}" style="width: 48px; height: 48px"></a></h4></td>
+                                        <td><h4><a href="/Cbrowser/{{dpt.0.2}}/{{c.1}}/">{{c.0}}</a></h4></td>
+                                        <td><h4><a href="/Cbrowser/{{dpt.0.2}}/{{c.1}}/">{{c.1}}</a></h4></td>
+                                        <td><h4><a href="/Cbrowser/{{dpt.0.2}}/{{c.1}}/">{{c.2}}</a></h4></td>
+                                        </a>
+                                    </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

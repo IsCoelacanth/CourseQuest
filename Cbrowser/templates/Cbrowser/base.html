@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cbrowser</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background: url(https://goo.gl/8fof05); background-attachment: fixed;">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <!-- Header -->
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="{% url 'Cbrowser:index' %}">CourseQuest</a>
+            </div>
+
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="{% url 'Cbrowser:index' %}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; Departments</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="{% url 'Cbrowser:student' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Student </a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="{% url 'Cbrowser:AllCor' %}"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span>&nbsp; Courses </a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="{% url 'Cbrowser:AllPro' %}"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span>&nbsp; Professors </a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="{% url 'Cbrowser:ER' %}"><span class="glyphicon glyphicon-console" aria-hidden="true"></span>&nbsp; ER Diagram </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{% url 'Cbrowser:stusign' %}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Student Resteration
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'Cbrowser:add_cor' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Course </a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'Cbrowser:AddAsProf' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Faculty Registration </a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'Cbrowser:add_dept' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Create New Department </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    {% block body %} {% endblock %}
+</body>
+
+</html>

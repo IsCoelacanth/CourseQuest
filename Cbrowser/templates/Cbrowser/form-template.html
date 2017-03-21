@@ -1,0 +1,10 @@
+<table class="table table-condensed">
+    {% for f in form%}
+    <tr>
+        <td>{{ f.label_tag }}</td>
+        <td>{{f}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+

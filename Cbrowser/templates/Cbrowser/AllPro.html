@@ -1,0 +1,41 @@
+{% extends "Cbrowser/base.html" %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-md-offset-2">
+                <div class="panel panel-primary" >
+                    <div class="panel-heading" >
+                        <h3>Current Listed Faculty</h3>
+                    </div>
+                    <div class="panel-body" >
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th><h4>Name</h4></th>
+                                    <th><h4>Course Taken</h4></th>
+                                    <th><h4>Department</h4></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in pro %}
+                                    
+                                    <tr >
+                                        <td><h4><a href="/Cbrowser/prof/{{p.p_id}}/"><img src="{{p.p_pic}}" style="width: 48px; height: 48px"></a></h4></td>
+                                        <td><h4><a href="/Cbrowser/prof/{{p.p_id}}/">{{p.name}}</a></h4></td>
+                                        <td><h4><a href="/Cbrowser/{{p.c_taken.dept.d_id}}/{{p.c_taken.c_id}}/">{{p.c_taken}}</a></h4></td>
+                                        <td><h4><a href="/Cbrowser/{{p.c_taken.dept.d_id}}/">{{p.dept}}</a></h4></td>
+                                    </tr>
+                                    
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}

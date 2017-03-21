@@ -1,0 +1,128 @@
+{% extends "Cbrowser/base.html" %} {% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <img src="{{cor.0.4}}" class="img-responsive" style="width: 420px; height: 360px">
+                    <br>
+                    <table class="table">
+                        <tr>
+                            <td><h4>Course Name</h4></td>
+                            <td><h4>{{cor.0.0}}</h4></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Semester</h4></td>
+                            <td><h4>{{cor.0.2}}</h4></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Duration</h4></td>
+                            <td><h4>{{cor.0.3}}</h4></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Department</h4></td>
+                            <td><h4><a href="{% url 'Cbrowser:detail' dpt.0.2%}">{{dpt.0.1}}</h4></a></td>
+                        </tr>
+                        <tr>
+                            <td><h4>Taken By</h4></td>
+                            <td>
+                                <h4><a href="{% url 'Cbrowser:prof' prf.0.1 %}"><img src="{{prf.0.2}}" class="img-responsive" style="width: 128px">{{prf.0.0}}</h4></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 col-md-9">
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'Cbrowser:detail' dpt.0.2%}">View All Courses</a></li>
+                <li role="presentation" class="active"><a href="{% url 'Cbrowser:enroll'  dpt.0.2 cor.0.1 %}">Enroll</a></li>
+                <li role="presentation" class="active"><a href="{% url 'Cbrowser:addlink'  dpt.0.2 cor.0.1 %}">Add Video Links</a></li>
+            </ul>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Links</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th><h4>Name</h4></th>
+                                <th><h4>Video Link</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for l in lnks %}
+
+                            <tr>
+                                <td><h4>{{l.l_title}}</h4></td>
+                                <td><h4><a href="{{l.link}}" class="btn btn-success">View <span class="glyphicon glyphicon-play"></span></a></h4></td>
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3>Enrolled Students</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th><h4>Name</h4></th>
+                                <th><h4>Student ID</h4></th>
+                                <th><h4>Age</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for e in enrl %}
+
+                            <tr >
+                                <td><h4><a href="{%url 'Cbrowser:studet' e.2%}">{{e.3}}</a></h4></td>
+                                <td><h4>{{e.2}}</h4></td>
+                                <td><h4>{{e.5}}</h4></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% if penrl %}
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3>Past Enrollments</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><h4>Name</h4></th>
+                                    <th><h4>Student ID</h4></th>
+                                    <th><h4>Age</h4></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in penrl %}
+
+                                <tr >
+                                    <td><h4><a href="{%url 'Cbrowser:studet' p.2%}">{{p.3}}</a></h4></td>
+                                    <td><h4>{{p.2}}</h4></td>
+                                    <td><h4>{{p.5}}</h4></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

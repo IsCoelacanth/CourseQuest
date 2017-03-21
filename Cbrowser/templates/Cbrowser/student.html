@@ -1,0 +1,41 @@
+{% extends "Cbrowser/base.html" %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row" >
+            <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading" align="center">
+                        <h3>All Current Students</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table" >
+                        <thead align="center">
+                            <tr >
+                                <th></th>
+                                <th><h4>Name</h4></th>
+                                <th><h4>ID</h4></th>
+                                <th><h4>Age</h4></th>
+                                <th><h4>GPA</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in stu %}
+                            
+                            <tr>
+                                <td><h4><a href="{%url 'Cbrowser:studet' s.1%}"><img src="{{s.4}}" style="width: 52px; height: 52px;"></h4></a></td>
+                                <td><h4><a href="{%url 'Cbrowser:studet' s.1%}">{{s.0}}</h4></a></td>
+                                <td><h4><a href="{%url 'Cbrowser:studet' s.1%}">{{s.1}}</h4></a></td>
+                                <td><h4><a href="{%url 'Cbrowser:studet' s.1%}">{{s.2}}</h4></a></td>
+                                <td><h4><a href="{%url 'Cbrowser:studet' s.1%}">{{s.3}}</h4></a></td>
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </dib>
+        </div>
+    </div>
+</div>
+{% endblock  %}
